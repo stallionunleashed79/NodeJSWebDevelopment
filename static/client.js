@@ -5,7 +5,7 @@
                 for (let i = 0; i < 10000; i++) {
                     payload += `Message: ${i + 1}\n`;
                 }
-                fetch("/api/data", {
+                fetch("http://localhost:3000/api/data", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

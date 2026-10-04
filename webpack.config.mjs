@@ -13,13 +13,6 @@ export default {
   },
   devServer: {
     static: ['./static', 'node_modules/bootstrap/dist'],
-    port: 5100,
-    proxy: [
-    {
-      context: ['/api'],
-      target: 'http://localhost:3000',
-      changeOrigin: true, // Optional: useful for name-based virtual hosted sites
-    },
-  ], 
+    port: 5100
   }
 }
