@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script>
         document.addEventListener("DOMContentLoaded", function() {
             const button = document.getElementById("btn");
             button.addEventListener("click", function() {
@@ -18,7 +14,9 @@
                 })
                 .then(response => response.json())
                 .then(data => {
+                    console.log("Response received:",JSON.stringify(data));
                     document.getElementById('msg').textContent = data.statusText
+                    document.getElementById('body').textContent = `Resp ${data.text()}`
                     data.text().then(body => {
                         document.getElementById('body').textContent = body
                     });
@@ -26,10 +24,3 @@
                 .catch(error => console.error("Error fetching data:", error));
             });
         });
-    </script>
-    <body>
-        <button id="btn">Send Request</button>
-        <div id="msg"></div>
-        <pre id="body"></pre>
-    </body>
-</html>

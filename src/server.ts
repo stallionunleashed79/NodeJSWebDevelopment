@@ -1,13 +1,13 @@
 import { createServer } from "http";
-import { basicHandler } from "./handler";
 import express, { Express } from "express";
 import { readHandler } from "./readHandler";
 
 const port = 3000;
 const expressApp: Express = express();
-expressApp.get('/favicon.ico', (req, res) => res.status(404).end());
-expressApp.get('*', basicHandler);
 expressApp.post('/api/data', readHandler);
+expressApp.use(express.static('static'));
+expressApp.use(express.static('node_modules/bootstrap/dist'));
+expressApp.use(express.static('dist/client'));
 
 const server = createServer(expressApp);
 server.listen(port, () => {
